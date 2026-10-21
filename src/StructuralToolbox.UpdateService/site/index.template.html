@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="四季光伏工具箱官方下载与版本信息。">
+  <meta name="theme-color" content="#173f3a">
+  <title>四季光伏工具箱 · 官方下载</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="四季光伏工具箱下载首页">
+      <span class="brand-mark" aria-hidden="true">四</span>
+      <span>四季光伏工具箱</span>
+    </a>
+    <span class="channel">稳定版</span>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="download-title">
+      <div class="hero-copy">
+        <p class="eyebrow">AUTOCAD 2020 · WINDOWS 64 位</p>
+        <h1 id="download-title">少一点重复绘图，<br>多一点结构判断。</h1>
+        <p class="lead">面向光伏结构设计的 AutoCAD 工具箱，提供自动画导轨、自动布置配重和工程量统计。</p>
+        <div class="actions">
+          <a class="primary-button" href="{{DOWNLOAD_URL}}" download>下载 v{{VERSION}}</a>
+          <span class="file-meta">完整安装器 · {{SIZE_MB}} MB</span>
+        </div>
+      </div>
+
+      <aside class="release-card" aria-label="当前版本信息">
+        <div class="release-heading">
+          <span>当前稳定版</span>
+          <strong>v{{VERSION}}</strong>
+        </div>
+        <dl>
+          <div><dt>发布日期</dt><dd>{{RELEASE_DATE}}</dd></div>
+          <div><dt>适用平台</dt><dd>AutoCAD 2020 / Win64</dd></div>
+          <div><dt>安装方式</dt><dd>完整 EXE 原位升级</dd></div>
+        </dl>
+        <div class="hash">
+          <span>SHA-256</span>
+          <code>{{SHA256}}</code>
+        </div>
+      </aside>
+    </section>
+
+    <section class="feature-grid" aria-label="主要功能">
+      <article><span>01</span><h2>自动画导轨</h2><p>按阵列几何和工程规则生成导轨，减少重复操作。</p></article>
+      <article><span>02</span><h2>自动布置配重</h2><p>识别组件阵列并按排、间距和特殊规则布置配重。</p></article>
+      <article><span>03</span><h2>数量统计</h2><p>汇总导轨长度与配重数量，直接服务出图和复核。</p></article>
+    </section>
+
+    <section class="install-note" aria-labelledby="install-title">
+      <div>
+        <p class="eyebrow">安装前请注意</p>
+        <h2 id="install-title">保存图纸，并完全退出 AutoCAD。</h2>
+      </div>
+      <ol>
+        <li>下载并运行完整安装器。</li>
+        <li>升级时选择与旧版相同的安装范围。</li>
+        <li>重新启动 AutoCAD，输入 <code>JJJJ</code> 打开工具箱。</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <span>FourJTooLs</span>
+    <span>更新清单：<a href="stable.json">stable.json</a></span>
+  </footer>
+</body>
+</html>

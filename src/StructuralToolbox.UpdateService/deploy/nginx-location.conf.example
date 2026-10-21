@@ -1,0 +1,24 @@
+# Replace /srv/fourjtools-update with the uploaded site directory.
+root /srv/fourjtools-update;
+index index.html;
+
+location = /stable.json {
+    try_files $uri =404;
+    default_type application/json;
+    add_header Cache-Control "no-store, max-age=0" always;
+    add_header X-Content-Type-Options "nosniff" always;
+}
+
+location /releases/ {
+    try_files $uri =404;
+    default_type application/octet-stream;
+    add_header Cache-Control "public, max-age=31536000, immutable" always;
+    add_header X-Content-Type-Options "nosniff" always;
+}
+
+location / {
+    try_files $uri $uri/ =404;
+    add_header Cache-Control "public, max-age=300" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+}

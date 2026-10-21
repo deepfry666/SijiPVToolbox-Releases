@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "project": "FourJ PV Toolbox",
+  "sourceCommit": "f5cd667b3e096f1c340143466f28e1b13623a02c",
+  "baselineVersion": "1.0.8",
+  "importMode": "reviewed source snapshot; private Git history excluded",
+  "historicalTags": "Existing public release tags and assets are preserved; they do not identify this imported source tree.",
+  "verification": "See OPEN_SOURCE.md and repository-consolidation verification documentation; no new installer was built or published."
+}

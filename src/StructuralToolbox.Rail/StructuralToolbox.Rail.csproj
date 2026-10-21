@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{EAE12DF8-BA32-4AE1-A659-D45C944F57CD}</ProjectGuid>
+    <OutputType>Library</OutputType><RootNamespace>StructuralToolbox.Rail</RootNamespace>
+    <AssemblyName>StructuralToolbox.Rail</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment><AutoCAD2020Dir Condition=" '$(AutoCAD2020Dir)' == '' ">D:\cad\AutoCAD 2020</AutoCAD2020Dir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>bin\Debug\</OutputPath><DefineConstants>DEBUG;TRACE</DefineConstants><PlatformTarget>x64</PlatformTarget><Prefer32Bit>false</Prefer32Bit></PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' "><DebugType>pdbonly</DebugType><Optimize>true</Optimize><OutputPath>bin\Release\</OutputPath><DefineConstants>TRACE</DefineConstants><PlatformTarget>x64</PlatformTarget><Prefer32Bit>false</Prefer32Bit></PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" /><Reference Include="System.Core" /><Reference Include="System.Drawing" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="System.Xaml" /><Reference Include="WindowsBase" /><Reference Include="PresentationCore" /><Reference Include="PresentationFramework" />
+    <Reference Include="acmgd"><HintPath>$(AutoCAD2020Dir)\acmgd.dll</HintPath><Private>False</Private></Reference><Reference Include="acdbmgd"><HintPath>$(AutoCAD2020Dir)\acdbmgd.dll</HintPath><Private>False</Private></Reference><Reference Include="accoremgd"><HintPath>$(AutoCAD2020Dir)\accoremgd.dll</HintPath><Private>False</Private></Reference><Reference Include="AdWindows"><HintPath>$(AutoCAD2020Dir)\AdWindows.dll</HintPath><Private>False</Private></Reference>
+  </ItemGroup>
+  <ItemGroup><ProjectReference Include="..\StructuralToolbox.Contracts\StructuralToolbox.Contracts.csproj"><Project>{B3B8A111-4880-4C53-8E86-7E621DBF41B7}</Project><Name>StructuralToolbox.Contracts</Name></ProjectReference></ItemGroup>
+  <ItemGroup>
+    <Compile Include="RailToolboxModule.cs" /><Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Commands\AnnotationOverlapCommands.cs" /><Compile Include="Commands\PanelRectangleReader.cs" /><Compile Include="Commands\QuantityTableService.cs" /><Compile Include="Commands\RailCommands.cs" /><Compile Include="Commands\RailDrawingService.cs" /><Compile Include="Commands\VerificationCommands.cs" />
+    <Compile Include="Core\AnnotationOverlapSolver.cs" /><Compile Include="Core\DeterministicLaneSolver.cs" /><Compile Include="Core\Geometry.cs" /><Compile Include="Core\GeometryFingerprint.cs" /><Compile Include="Core\RailLayoutEngine.cs" /><Compile Include="Core\RailStatistics.cs" /><Compile Include="Core\ToolMetadataCodec.cs" />
+    <Compile Include="Settings\RailSettings.cs" /><Compile Include="Settings\RailSettingsStore.cs" /><Compile Include="UI\ToolboxControl.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

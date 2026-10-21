@@ -1,0 +1,148 @@
+using System;
+using System.Collections.Generic;
+using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.Geometry;
+using StructuralToolbox.Ballast.Core;
+
+namespace StructuralToolbox.Ballast.Commands
+{
+    internal static class BallastPanelReader
+    {
+        private const double DuplicatePointTolerance = 0.01;
+        private const double RightAngleToleranceDegrees = 0.05;
+
+        public static bool TryRead(Polyline polyline, out BallastPanel panel,
+            out string reason)
+        {
+            panel = null;
+            reason = String.Empty;
+            if (polyline == null)
+            {
+                reason = "对象为空";
+                return false;
+            }
+            if (!polyline.Closed)
+            {
+                reason = "多段线未闭合";
+                return false;
+            }
+            if (Math.Abs(polyline.Normal.X) > 1e-9 ||
+                Math.Abs(polyline.Normal.Y) > 1e-9 ||
+                polyline.Normal.Z < 0.999999999)
+            {
+                reason = "多段线不是正Z法向的二维对象";
+                return false;
+            }
+
+            List<BallastVec2> vertices = new List<BallastVec2>();
+            for (int index = 0; index < polyline.NumberOfVertices; index++)
+            {
+                if (Math.Abs(polyline.GetBulgeAt(index)) > 1e-9)
+                {
+                    reason = "多段线包含圆弧段";
+                    return false;
+                }
+                Point2d point = polyline.GetPoint2dAt(index);
+                BallastVec2 vertex = new BallastVec2(point.X, point.Y);
+                if (vertices.Count == 0 ||
+                    BallastVec2.Distance(vertices[vertices.Count - 1], vertex) >
+                        DuplicatePointTolerance)
+                {
+                    vertices.Add(vertex);
+                }
+            }
+
+            if (vertices.Count > 1 &&
+                BallastVec2.Distance(vertices[0], vertices[vertices.Count - 1]) <=
+                    DuplicatePointTolerance)
+            {
+                vertices.RemoveAt(vertices.Count - 1);
+            }
+            if (vertices.Count != 4)
+            {
+                reason = "闭合多段线不是四边形";
+                return false;
+            }
+
+            BallastVec2[] edges = new BallastVec2[4];
+            double[] lengths = new double[4];
+            for (int index = 0; index < 4; index++)
+            {
+                edges[index] = vertices[(index + 1) % 4] - vertices[index];
+                lengths[index] = edges[index].Length;
+                if (lengths[index] <= DuplicatePointTolerance)
+                {
+                    reason = "多段线包含零长度边";
+                    return false;
+                }
+            }
+
+            double rightAngleSine =
+                Math.Sin(RightAngleToleranceDegrees * Math.PI / 180.0);
+            for (int index = 0; index < 4; index++)
+            {
+                BallastVec2 first = edges[index].Normalized();
+                BallastVec2 second = edges[(index + 1) % 4].Normalized();
+                if (Math.Abs(BallastVec2.Dot(first, second)) > rightAngleSine)
+                {
+                    reason = "四边形存在非直角";
+                    return false;
+                }
+            }
+
+            if (!NearlySameLength(lengths[0], lengths[2]) ||
+                !NearlySameLength(lengths[1], lengths[3]))
+            {
+                reason = "四边形对边长度不一致";
+                return false;
+            }
+            BallastVec2 diagonalCenter1 =
+                (vertices[0] + vertices[2]) / 2.0;
+            BallastVec2 diagonalCenter2 =
+                (vertices[1] + vertices[3]) / 2.0;
+            if (BallastVec2.Distance(diagonalCenter1, diagonalCenter2) > 0.5)
+            {
+                reason = "四边形对角线中心不重合";
+                return false;
+            }
+
+            double firstLength = (lengths[0] + lengths[2]) / 2.0;
+            double secondLength = (lengths[1] + lengths[3]) / 2.0;
+            if (Math.Abs(firstLength - secondLength) <= 2.0)
+            {
+                reason = "组件接近正方形，无法判断长轴";
+                return false;
+            }
+
+            BallastVec2 longAxis;
+            BallastVec2 shortAxis;
+            double longLength;
+            double shortLength;
+            if (firstLength > secondLength)
+            {
+                longAxis = edges[0].Normalized();
+                shortAxis = edges[1].Normalized();
+                longLength = firstLength;
+                shortLength = secondLength;
+            }
+            else
+            {
+                longAxis = edges[1].Normalized();
+                shortAxis = edges[0].Normalized();
+                longLength = secondLength;
+                shortLength = firstLength;
+            }
+
+            BallastVec2 center =
+                (vertices[0] + vertices[1] + vertices[2] + vertices[3]) / 4.0;
+            panel = new BallastPanel(center, longAxis, shortAxis, longLength,
+                shortLength, polyline.Elevation, polyline.Handle.ToString());
+            return true;
+        }
+
+        private static bool NearlySameLength(double first, double second)
+        {
+            return Math.Abs(first - second) <= 0.5;
+        }
+    }
+}
