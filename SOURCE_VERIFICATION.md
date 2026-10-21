@@ -11,6 +11,7 @@
 - 根 MIT 许可仅适用于自有代码；Inno Setup、中文翻译及 Autodesk 依赖边界见 `THIRD_PARTY_NOTICES.md`，不把第三方内容改授 MIT。
 - 公开文件集执行脱敏检查和隐藏敏感值的 Gitleaks 扫描；依赖缓存、构建产物、旧私有 Git 历史及本地审计记录不导入。公开前由独立审查核对实际暂存文件集。
 - 客户端稳定更新地址保持为原公开发行库的 `stable.json`，未切换仓库、包标识或更新校验逻辑。
+- [源码导入 PR #1](https://github.com/deepfry666/SijiPVToolbox-Releases/pull/1) 已合并；远端源码树与审查提交一致。合并后再次比对，原 7 个标签、7 个 Release 及资产元数据不变，匿名读取更新清单成功且 SHA-256 与迁移前相同。
 
 ## 未核验
 
