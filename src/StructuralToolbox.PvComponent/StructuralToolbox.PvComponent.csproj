@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{F19C8DFC-B966-4B67-A21B-B53BA07CCF66}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>StructuralToolbox.PvComponent</RootNamespace>
+    <AssemblyName>StructuralToolbox.PvComponent</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoCAD2020Dir Condition=" '$(AutoCAD2020Dir)' == '' ">D:\cad\AutoCAD 2020</AutoCAD2020Dir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="acmgd">
+      <HintPath>$(AutoCAD2020Dir)\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd">
+      <HintPath>$(AutoCAD2020Dir)\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="accoremgd">
+      <HintPath>$(AutoCAD2020Dir)\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\PvComponentSettings.cs" />
+    <Compile Include="Settings\PvComponentSettingsStore.cs" />
+    <Compile Include="Core\PvComponentGeometry.cs" />
+    <Compile Include="Core\PvComponentStatistics.cs" />
+    <Compile Include="UI\PvComponentDiagram.cs" />
+    <Compile Include="UI\PvComponentDialog.cs" />
+    <Compile Include="Commands\PvComponentDrawingService.cs" />
+    <Compile Include="Commands\PvComponentTableService.cs" />
+    <Compile Include="Commands\PvComponentCommands.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

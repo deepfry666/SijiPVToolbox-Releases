@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage
+  SchemaVersion="1.0"
+  AutodeskProduct="AutoCAD"
+  ProductType="Application"
+  Name="Siji PV Toolbox"
+  NameChs="四季光伏工具箱"
+  AppVersion="{{APP_VERSION}}"
+  ProductCode="{{PRODUCT_CODE}}"
+  UpgradeCode="{{UPGRADE_CODE}}">
+  <CompanyDetails Name="{{PUBLISHER}}" />
+  <RuntimeRequirements OS="Win64" Platform="AutoCAD*" />
+  <!-- GENERATED_COMPONENTS -->
+</ApplicationPackage>

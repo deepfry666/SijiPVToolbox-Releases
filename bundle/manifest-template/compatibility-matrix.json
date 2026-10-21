@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "policy": {
+    "verifiedMeans": "Built and same-hash runtime-tested on the exact AutoCAD series. Current R23.1 evidence covers CoreConsole database runtime; GUI acceptance is recorded separately.",
+    "candidateMeans": "Planned target only. It must not be emitted into a release manifest until its payload exists and runtime verification is recorded.",
+    "guiAcceptancePolicy": "GUI, Ribbon, profile-specific integrations, interaction, upgrade, and uninstall acceptance are tracked separately from core runtime compatibility.",
+    "defaultReleaseStatuses": [
+      "verified"
+    ]
+  },
+  "targets": [
+    {
+      "year": 2018,
+      "series": "R22.0",
+      "runtimeFamily": "legacy-netfx",
+      "status": "candidate",
+      "sourceModule": null,
+      "modulePath": "Contents/Windows/Legacy/R22.0/StructuralToolbox.dll"
+    },
+    {
+      "year": 2019,
+      "series": "R23.0",
+      "runtimeFamily": "legacy-netfx",
+      "status": "candidate",
+      "sourceModule": null,
+      "modulePath": "Contents/Windows/Legacy/R23.0/StructuralToolbox.dll"
+    },
+    {
+      "year": 2020,
+      "series": "R23.1",
+      "runtimeFamily": "legacy-netfx",
+      "status": "verified",
+      "buildProfile": "acad2020-netfx",
+      "managedApiVersion": "23.1",
+      "sourceModule": "bundle/ZhStructureToolbox.bundle/Contents/Windows/R23.1/StructuralToolbox.dll",
+      "modulePath": "Contents/Windows/Legacy/R23.1/StructuralToolbox.dll"
+    },
+    {
+      "year": 2021,
+      "series": "R24.0",
+      "runtimeFamily": "legacy-netfx",
+      "status": "candidate",
+      "sourceModule": null,
+      "modulePath": "Contents/Windows/Legacy/R24.0/StructuralToolbox.dll"
+    },
+    {
+      "year": 2022,
+      "series": "R24.1",
+      "runtimeFamily": "legacy-netfx",
+      "status": "candidate",
+      "sourceModule": null,
+      "modulePath": "Contents/Windows/Legacy/R24.1/StructuralToolbox.dll"
+    },
+    {
+      "year": 2023,
+      "series": "R24.2",
+      "runtimeFamily": "legacy-netfx",
+      "status": "candidate",
+      "sourceModule": null,
+      "modulePath": "Contents/Windows/Legacy/R24.2/StructuralToolbox.dll"
+    },
+    {
+      "year": 2024,
+      "series": "R24.3",
+      "runtimeFamily": "legacy-netfx",
+      "status": "candidate",
+      "sourceModule": null,
+      "modulePath": "Contents/Windows/Legacy/R24.3/StructuralToolbox.dll"
+    },
+    {
+      "year": 2025,
+      "series": "R25.0",
+      "runtimeFamily": "net8-windows",
+      "status": "candidate",
+      "sourceModule": null,
+      "modulePath": "Contents/Windows/Net8/R25.0/StructuralToolbox.dll"
+    },
+    {
+      "year": 2026,
+      "series": "R25.1",
+      "runtimeFamily": "net8-windows",
+      "status": "candidate",
+      "sourceModule": null,
+      "modulePath": "Contents/Windows/Net8/R25.1/StructuralToolbox.dll"
+    }
+  ]
+}

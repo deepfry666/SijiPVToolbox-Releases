@@ -1,0 +1,4 @@
+/src/StructuralToolbox.ArrayRecognition/** text eol=lf
+/scripts/*array-recognition*.ps1 text eol=lf
+/tests/ArrayRecognition* text eol=lf
+/outputs/StructuralToolbox.ArrayRecognition_v0.1.0_AutoCAD2020/** -text -diff

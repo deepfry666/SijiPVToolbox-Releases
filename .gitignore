@@ -1,0 +1,41 @@
+# Local build, test, and verification artifacts
+/work/
+**/bin/
+**/obj/
+/.vs/
+
+# Installers belong in GitHub Releases, never in source history.
+/outputs/
+*.exe
+*.dll
+*.pdb
+
+# Engineering fixtures and private signing/configuration material
+*.dwg
+*.dxf
+*.pfx
+*.p12
+*.pem
+.env*
+
+# AutoCAD backup and lock files
+*.bak
+*.dwl
+*.dwl2
+*.sv$
+*.ac$
+
+# IDE and operating-system metadata
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+~$*

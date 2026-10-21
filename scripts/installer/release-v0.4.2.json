@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 3,
+  "releaseVersion": "0.4.2",
+  "assemblyVersion": "0.4.2.0",
+  "installerAppId": "{0DB1FAD5-EC98-434F-8AF6-E16B3462A678}",
+  "testInstallerAppId": "{9AB1205B-9640-4A83-A9A0-912285618A0D}",
+  "bundleProductCode": "{9C42F595-68E0-4945-B8D7-62BE70975D5F}",
+  "testBundleProductCode": "{6069B95D-EFB6-431B-8275-CAC66D2B19C4}",
+  "bundleUpgradeCode": "{7D31C7E3-7805-4611-9B3E-5946775A86EC}",
+  "testBundleUpgradeCode": "{2451814C-C7C6-46AC-A303-422227D5FE09}",
+  "acceptedLegacyProductCodes": [
+    "{5C2AE40B-D8F5-4025-B75E-13C0AEEB1251}"
+  ],
+  "publisher": "FourJTooLs",
+  "applicationName": "四季光伏工具箱",
+  "englishApplicationName": "Siji PV Toolbox",
+  "bundleDirectoryName": "ZhStructureToolbox.bundle",
+  "setupBaseName": "四季光伏工具箱_Setup",
+  "allowedSignerThumbprints": [],
+  "updateChannel": "stable",
+  "currentReleaseClassification": "UNSIGNED",
+  "authenticodeExpectation": "NotSigned",
+  "publicDistributionAllowed": true
+}

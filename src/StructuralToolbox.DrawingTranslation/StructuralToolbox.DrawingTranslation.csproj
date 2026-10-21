@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{D9A9136A-4141-43B2-A971-74ED120D1A4B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>StructuralToolbox.DrawingTranslation</RootNamespace>
+    <AssemblyName>StructuralToolbox.DrawingTranslation</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <AutoCAD2020Dir Condition=" '$(AutoCAD2020Dir)' == '' ">D:\cad\AutoCAD 2020</AutoCAD2020Dir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <Optimize>true</Optimize><OutputPath>bin\Release\</OutputPath><PlatformTarget>x64</PlatformTarget><Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <ProjectReference Include="..\StructuralToolbox.Contracts\StructuralToolbox.Contracts.csproj">
+      <Project>{B3B8A111-4880-4C53-8E86-7E621DBF41B7}</Project>
+      <Name>StructuralToolbox.Contracts</Name>
+    </ProjectReference>
+    <Reference Include="acmgd"><HintPath>$(AutoCAD2020Dir)\acmgd.dll</HintPath><Private>False</Private></Reference>
+    <Reference Include="acdbmgd"><HintPath>$(AutoCAD2020Dir)\acdbmgd.dll</HintPath><Private>False</Private></Reference>
+    <Reference Include="accoremgd"><HintPath>$(AutoCAD2020Dir)\accoremgd.dll</HintPath><Private>False</Private></Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DrawingTranslationToolboxModule.cs" />
+    <Compile Include="Core\DrawingTextModels.cs" />
+    <Compile Include="Core\TextProtection.cs" />
+    <Compile Include="Core\TranslationBatch.cs" />
+    <Compile Include="Api\TranslationApi.cs" />
+    <Compile Include="Api\TranslationCache.cs" />
+    <Compile Include="Commands\TranslationTarget.cs" />
+    <Compile Include="Commands\TranslationCommands.cs" />
+    <Compile Include="UI\TranslationReviewDialog.cs" />
+    <Compile Include="UI\TranslationApiSettingsDialog.cs" />
+    <Compile Include="UI\DrawingTranslationToolboxControl.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

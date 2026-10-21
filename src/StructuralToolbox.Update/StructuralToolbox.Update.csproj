@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{6E5E4D42-2F57-47D0-958A-1F61A8D9AA70}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>StructuralToolbox.Update</RootNamespace>
+    <AssemblyName>StructuralToolbox.Update</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath><DefineConstants>DEBUG;TRACE</DefineConstants>
+    <PlatformTarget>x64</PlatformTarget><Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DebugType>pdbonly</DebugType><Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath><DefineConstants>TRACE</DefineConstants>
+    <PlatformTarget>x64</PlatformTarget><Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StructuralToolbox.Contracts\StructuralToolbox.Contracts.csproj">
+      <Project>{B3B8A111-4880-4C53-8E86-7E621DBF41B7}</Project>
+      <Name>StructuralToolbox.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\UpdateException.cs" />
+    <Compile Include="Core\UpdateManifest.cs" />
+    <Compile Include="Core\UpdateManifestParser.cs" />
+    <Compile Include="Core\UpdateService.cs" />
+    <Compile Include="Core\UpdateSourceResolver.cs" />
+    <Compile Include="Core\VersionComparer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\UpdateCheckControl.cs" />
+    <Compile Include="UI\UpdateResultDialog.cs" />
+    <Compile Include="UpdateToolboxModule.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
